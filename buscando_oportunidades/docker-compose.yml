@@ -22,6 +22,7 @@ services:
             - '.:/var/www/html'
         networks:
             - sail
+            - backend
 networks:
     sail:
         driver: bridge
