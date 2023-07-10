@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//RUTAS PÚBLICAS
+require_once "api_routes/auth.routes.php";
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    require_once "api_routes/users.routes.php";
 });

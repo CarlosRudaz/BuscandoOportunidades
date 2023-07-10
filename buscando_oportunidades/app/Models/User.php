@@ -8,6 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $username
+ *
+ *
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -21,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        "username"
     ];
 
     /**
@@ -42,4 +51,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function subUsuarios()
+    {
+        $emprendedor = $this->hasOne(Emprendedor::class, 'user_id');
+//        $empleador = $this->hasOne(Empleador::class, 'user_id');
+
+        return [
+//            "empleador" => $empleador,
+            "emprendedor" => $emprendedor
+        ];
+    }
 }
